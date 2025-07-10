@@ -2,21 +2,27 @@
   "name": "vite-project",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prod": "node ./backend/server.js",
+    "devback": "nodemon ./backend/server.js"
   },
   "dependencies": {
+    "@prisma/client": "^6.11.1",
     "axios": "^1.9.0",
+    "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
+    "express-validator": "^7.2.1",
     "lucide-react": "^0.525.0",
+    "mongodb": "^6.17.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "recharts": "^2.15.3",
+    "router": "^2.2.0",
     "socket.io": "^4.8.1"
   },
   "devDependencies": {
@@ -30,7 +36,9 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.11.0",
+    "nodemon": "^3.1.10",
     "postcss": "^8.4.49",
+    "prisma": "^6.11.1",
     "tailwindcss": "^3.4.15",
     "vite": "^5.4.10"
   }
