@@ -50,9 +50,9 @@ live-chat/
 │ │ ├── routes/
 │ │ ├── utils/
 │ │ └── validators/
-│ ├── prisma/
-│ │ └── schema.prisma
 │ └── server.js
+├── prsima/
+|    └── prisma.schema
 ├── .env
 └── README.md
 ```
@@ -62,41 +62,35 @@ live-chat/
 
 ### 1. Clone Repository
 
-```bash
+```
 git clone https://github.com/ikhsan-kun/live-chat.git
 cd live-chat
-2. Backend Setup
-📦 Install Dependencies
-cd backend
 npm install
+```
+### 2. Backend Setup
 ⚙️ Create .env
+```
 Buat file .env:
 DATABASE_URL="mongodb://localhost:27017/livechat"
 JWT_SECRET="your_jwt_secret"
-Gunakan MongoDB Atlas jika ingin pakai cloud database.
-
+///Gunakan MongoDB Atlas jika ingin pakai cloud database.
+```
 🔧 Prisma Setup (MongoDB)
+```
 npx prisma generate
-Tidak perlu prisma db push karena MongoDB tidak pakai migrasi.
 
+///Tidak perlu prisma db push karena MongoDB tidak pakai migrasi.
+```
 ▶️ Run Backend
+```
 npm run devback
-Backend berjalan di: http://localhost:3000
-
-3. Frontend Setup
-cd ../frontend
-npm install
+///Backend berjalan di: http://localhost:3000
+```
+### 3. Frontend Setup
+```
 npm run dev
-Frontend berjalan di: http://localhost:5173
-
-✅ Sudah Selesai
- User registration & login
-
- JWT authentication
-
- Password hashing (bcrypt)
-
- Prisma + MongoDB setup
+///Frontend berjalan di: http://localhost:5173
+```
 
 🔜 Dalam Perencanaan
  Real-time messaging (Socket.IO)
@@ -110,12 +104,14 @@ Frontend berjalan di: http://localhost:5173
  Admin panel
 
 📦 Deployment Plan
+
 Platform	Layanan	Status
 Frontend	Vercel	🔜 Soon
 Backend	Render	🔜 Soon
 Database	MongoDB Atlas	✅ Ready
 
 🤝 Contributing
+
 Pull requests are welcome! Untuk perubahan besar, silakan buka issue terlebih dahulu.
 
 🪪 License
