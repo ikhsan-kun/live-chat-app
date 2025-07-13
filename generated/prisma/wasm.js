@@ -113,13 +113,6 @@ Prisma.NullTypes = {
  * Enums
  */
 
-exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
-  ReadUncommitted: 'ReadUncommitted',
-  ReadCommitted: 'ReadCommitted',
-  RepeatableRead: 'RepeatableRead',
-  Serializable: 'Serializable'
-});
-
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
