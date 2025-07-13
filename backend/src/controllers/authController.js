@@ -1,23 +1,24 @@
-const bycrpt = require("bcrypt");
+const bcrypt = require("bcrypt");
 const { generateToken, verifyToken } = require("../utils/auth");
-const validator = require("../validators/authValidator");
-const { PrismaClient } = require("@prisma/client");
+// const {validationResult} = require("../validationResults/authvalidationResult");
+const { validationResult } = require("express-validator");
+const { PrismaClient } = require("../../../generated/prisma");
 const prisma = new PrismaClient();
 
 const register = async (req, res) => {
   const { name, email, password } = req.body;
 
-  const validation = validator(req);
-  if (!validation.isValid) {
+  const validation = validationResult(req);
+  if (!validation.isEmpty()) {
     return res.status(400).json({
       success: false,
-      message: validation.errors,
+      message: "Validation failed",
       errors: validation.array(),
     });
   }
 
   try {
-    const hashPassword = await bycrpt.hash(password, 10);
+    const hashPassword = await bcrypt.hash(password, 10);
     const userCreated = await prisma.user.create({
       data: {
         name,
@@ -43,11 +44,11 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
 
-  const validation = validator(req);
-  if (!validation.isValid) {
+  const validation = validationResult(req);
+  if (!validation.isEmpty()) {
     return res.status(400).json({
       success: false,
-      message: validation.errors,
+      message: "Validation failed",
       errors: validation.array(),
     });
   }
@@ -64,7 +65,7 @@ const login = async (req, res) => {
       });
     }
 
-    const isPasswordValid = await bcyrpt.compare(password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       return res.status(401).json({
         success: false,
