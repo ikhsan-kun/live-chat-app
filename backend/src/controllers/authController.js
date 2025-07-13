@@ -64,7 +64,7 @@ const login = async (req, res) => {
       });
     }
 
-    const isPasswordValid = await bycrpt.compare(password, user.password);
+    const isPasswordValid = await bcyrpt.compare(password, user.password);
     if (!isPasswordValid) {
       return res.status(401).json({
         success: false,
@@ -76,7 +76,7 @@ const login = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Login successful",
-      data: { user, token },
+      data: { token },
     });
   } catch (error) {
     res.status(500).json({
