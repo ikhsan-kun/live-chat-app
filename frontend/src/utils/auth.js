@@ -45,7 +45,6 @@ export function checkUnauthenticatedRouteOnly(navigate) {
     navigate('/');
     return true;
   }
-
   return false;
 }
 
