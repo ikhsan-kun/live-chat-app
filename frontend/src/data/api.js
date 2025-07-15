@@ -1,8 +1,7 @@
 import BASE_URL from "../utils/config";
 import { putAccessToken } from "../utils/auth";
 
-
-export default async function registerUser(name, email, password) {
+export async function registerUser(name, email, password) {
   try {
     const response = await fetch(`${BASE_URL}/auth/register`, {
       method: "POST",

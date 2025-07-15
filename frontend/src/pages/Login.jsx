@@ -1,20 +1,22 @@
 import { useState } from "react";
-import { Link} from "react-router-dom";
-import loginUser from "../data/api"; // Assuming you have an API function for login
+import { Link , useNavigate} from "react-router-dom";
+import { loginUser } from "../data/api"; // Import yang sudah diperbaiki
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const Navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     loginUser(email, password)
       .then((data) => {
-        console.log("Login successful:", data);
+        console.log("Login berhasil:");
+        Navigate("/"); 
       })
       .catch((error) => {
-        console.error("Login failed:", error);
-        alert("Login failed. Please check your credentials.");
+        console.error("Login gagal:", error);
+        alert("Login gagal. Silakan periksa kembali kredensial Anda.");
       });
   };
   return (
